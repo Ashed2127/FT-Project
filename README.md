@@ -1,4 +1,4 @@
-## our final project FT system for lewi cafe
+## Food ordering and Table reservation system for lewi cafe.
 
 ## Project setup(to install node modules and dependencies)
 ```
