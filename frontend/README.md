@@ -9,7 +9,7 @@ npm install
 ```
 npm run serve
 ```
-## At the backend use your own chapa ap key.
+## At the backend use your own chapa api key.
 
 ## to test chapa payment use one of those number which provided by chapa
 ### awash
