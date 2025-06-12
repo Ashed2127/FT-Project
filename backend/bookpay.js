@@ -10,7 +10,7 @@ let transactionreference;
 export const bookResponseData = async (req, res) => {
   try {
     const user = req.body;
-    const api_key = "CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm";
+    const api_key = "Your_Chapa_Api_Key";
 
     const userData = {
       amount: user.amount,
@@ -53,7 +53,7 @@ async function getTransactionReference() {
   try {
     const url = `https://api.chapa.co/v1/transaction/verify/${transactionreference}`;
     const headers = {
-      Authorization: "Bearer CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm",
+      Authorization: "Bearer Your_Chapa_Api_Key",
     };
 
     const response = await axios.get(url, { headers });
