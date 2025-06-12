@@ -10,8 +10,7 @@
 // export const responseData = async (req, res) => {
 //   try {
 //     const user = req.body;
-//     const api_key = "CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm"; //CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm
-
+//     const api_key = "Your_Chapa_Api_Key";
 //     const userData = {
 //       amount: user.amount,
 //       currency: user.currency,
@@ -55,7 +54,7 @@
 //       //   method: "GET",
 //       //   url: `https://api.chapa.co/v1/transaction/verify/${transactionreference}`,
 //       //   headers: {
-//       //     Authorization: "Bearer CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm",
+//       //     Authorization: "Your_Chapa_Api_Key",
 //       //   },
 //       // };
 //       // request(options, function (error, res) {
@@ -71,7 +70,7 @@
 // //   try {
 // //     const url = `https://api.chapa.co/v1/transaction/verify/${transactionreference}`;
 // //     const headers = {
-// //       Authorization: "Bearer CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm",
+// //       Authorization: "Your_Chapa_Api_Key",
 // //     };
 
 // //     const response = await axios.get(url, { headers });
@@ -115,7 +114,7 @@ let transactionreference;
 export const responseData = async (req, res) => {
   try {
     const user = req.body;
-    const api_key = "CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm";
+    const api_key = "Your_Chapa_Api_Key";
 
     const userData = {
       amount: user.amount,
@@ -158,7 +157,7 @@ async function getTransactionReference() {
   try {
     const url = `https://api.chapa.co/v1/transaction/verify/${transactionreference}`;
     const headers = {
-      Authorization: "Bearer CHASECK_TEST-bfjHXRfvJVWPeb48mTu8YTejdVZhweZm",
+      Authorization: "Bearer Your_Chapa_Api_Key",
     };
 
     const response = await axios.get(url, { headers });
