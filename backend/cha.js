@@ -1,6 +1,6 @@
 // import Chapa from 'chapa'
 
-// let myChapa = new Chapa('CHASECK_TEST-sAZLjV7jiqT7HF5XBFofZxT5Zz416nCn')
+// let myChapa = new Chapa('Your_Chapa_Api_Key');
 
 //  const customerInfo =  {
 //     amount: '250',
