@@ -44,3 +44,5 @@ docker compose restart
 # Stop everything
 docker compose down -v | docker compose down
 docker compose up --build -d
+
+also new init.sql file added
