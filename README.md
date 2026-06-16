@@ -111,6 +111,14 @@ This spins up three containers:
 | `backend` | ft-backend     | 8081  | Node.js API                   |
 | `frontend`| ft-frontend    | 8080  | Vue dev server (hot-reload)   |
 
+### 3. Open the app
+- 🌐 **Frontend:** http://localhost:8080
+- 🔌 **Backend API:** http://localhost:8081
+- 🗄️ **MySQL:** `localhost:3306` (user `root`, pass `rootpassword`, db `db_restaurant`)
+
+The first start may take a few minutes (image pulls + `npm install` inside the containers).
+
+---
 
 ## 🛠️ Manual Setup (Without Docker)
 
@@ -131,13 +139,6 @@ npm run serve
 npm start
 ```
 
-### Database
-You must run a local MySQL 8 instance, then:
-1. Create a database named `db_restaurant`
-2. Run [`init.sql`](./init.sql) to create tables + seed food items
-3. Edit `backend/config/database.js` to point at `localhost` (instead of `mysql`)
-
----
 
 ## 🗄️ Database Initialization
 
