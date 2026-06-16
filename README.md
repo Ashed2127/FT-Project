@@ -320,4 +320,8 @@ If you hit this, see the [Troubleshooting → White / blank interface](#-white--
 - Frontend axios base URL not pointing at `http://localhost:8081`.
 - API returning empty because `init.sql` was never loaded.
 - Browser-side Vue errors (check the console + `docker compose logs -f frontend`).
-.
+
+---
+
+## 📜 License
+This project is private/educational — feel free to adapt for your own café or restaurant.
