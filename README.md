@@ -282,15 +282,13 @@ docker exec -it ft-mysql bash
    docker compose up --build -d
    ```
 
-
-### ❌ `docker compose up` fails with "port already allocated"
-Another process is using port `3306`, `8080`, or `8081`. Stop it, or edit `docker-compose.yml` to map different host ports.
-
-### ❌ Hot-reload not working
-The compose file mounts the project source as a volume so edits are reflected inside the container. If it isn't picking up changes, restart the affected service:
+### ❌ Backend logs: `❌ DB connection failed. Retrying in 5s...`
+This is normal on the **very first start** — the backend is waiting for MySQL to finish initializing. If it never succeeds:
 ```bash
-docker compose restart frontend
+docker compose ps                  # is ft-mysql healthy?
+docker compose logs mysql          # any startup errors?
 ```
+
 
 ---
 
