@@ -34,10 +34,11 @@ docker compose ps
 
 # View backend logs
 docker compose logs backend
+docker compose logs -f backend
 
 # View frontend logs
 docker compose logs frontend
-docker compose logs -f backend
+
 
 # Restart everything
 docker compose restart
