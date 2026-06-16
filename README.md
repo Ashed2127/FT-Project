@@ -305,3 +305,19 @@ docker compose restart frontend
 The project was **restructured to add Docker support** (assisted by Grok). Summary of what changed:
 
 ### 🆕 New files
+- **`docker-compose.yml`** (project root) — defines the `mysql`, `backend`, and `frontend` services.
+- **`backend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm start` (nodemon).
+- **`frontend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm run serve`.
+- **`init.sql`** — canonical DB schema + sample food data, replaceable of older dumps in `frontend/src/resources/`.
+
+### ✏️ Modified files
+- **`backend/config/database.js`** — `host` changed from `localhost` to the Docker service name `mysql`; added a retry loop (`connectWithRetry`) so the backend waits for MySQL to be ready.
+
+### ⚠️ Known issue after restructure
+> DB, backend, and frontend are all running, but the UI still shows a **white/blank page** and **menu items are not displayed**.
+
+If you hit this, see the [Troubleshooting → White / blank interface](#-white--blank-interface-on-httplocalhost8080) section above. The most likely culprits are:
+- Frontend axios base URL not pointing at `http://localhost:8081`.
+- API returning empty because `init.sql` was never loaded.
+- Browser-side Vue errors (check the console + `docker compose logs -f frontend`).
+.
