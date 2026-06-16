@@ -50,3 +50,4 @@ docker compose up --build -d
 also new init.sql file added
 config/database.js changed
 docker-compose file added in main root folder
+Dockerfile added in each backend and frontend root folder
