@@ -160,15 +160,6 @@ You must run a local MySQL 8 instance, then:
 docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
 ```
 
-### Or, load it once during first run
-The `docker-compose.yml` defines a volume for MySQL, so data **persists** between restarts. To re-seed from scratch:
-```bash
-docker compose down -v          # ⚠️ wipes MySQL data volume
-docker compose up --build -d
-docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
-```
-
----
 
 ## ⚙️ Environment & Configuration
 
@@ -243,6 +234,16 @@ docker compose restart
 # Stop everything (keep data volume)
 docker compose down
 
+# Stop everything AND wipe the MySQL volume
+docker compose down -v
+
+# Rebuild images after Dockerfile / package.json changes
+docker compose up --build -d
+
+# Open a shell inside a container
+docker exec -it ft-backend sh
+docker exec -it ft-frontend sh
+docker exec -it ft-mysql bash
 ```
 
 ---
