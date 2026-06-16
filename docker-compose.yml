@@ -15,7 +15,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-      start_period: 40s
+      start_period: 30s
 
   backend:
     build: ./backend
@@ -29,6 +29,8 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+    environment:
+      - NODE_ENV=development
 
   frontend:
     build: ./frontend

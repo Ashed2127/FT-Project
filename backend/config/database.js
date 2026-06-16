@@ -1,24 +1,20 @@
 import mysql from "mysql2";
 
-const dbConfig = {
+const db = mysql.createConnection({
     host: "mysql",
     user: "root",
     password: "rootpassword",
-    database: "db_restaurant",
-    connectTimeout: 10000
-};
+    database: "db_restaurant"
+});
 
-const db = mysql.createConnection(dbConfig);
-
-const connectWithRetry = (retries = 12) => {
+const connectWithRetry = (retries = 10) => {
     db.connect((err) => {
         if (err) {
             if (retries > 0) {
-                console.error(`❌ DB connection failed. Retrying in 8s... (${retries} left)`);
-                setTimeout(() => connectWithRetry(retries - 1), 8000);
+                console.error(`❌ DB connection failed. Retrying in 5s... (${retries} left)`);
+                setTimeout(() => connectWithRetry(retries - 1), 5000);
             } else {
-                console.error("❌ Could not connect to database after many attempts.");
-                throw err;
+                console.error("❌ Could not connect to database.");
             }
         } else {
             console.log("✅ Successfully connected to the database.");
