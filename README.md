@@ -139,6 +139,13 @@ npm run serve
 npm start
 ```
 
+### Database
+You must run a local MySQL 8 instance, then:
+1. Create a database named `db_restaurant`
+2. Run [`init.sql`](./init.sql) to create tables + seed food items
+3. Edit `backend/config/database.js` to point at `localhost` (instead of `mysql`)
+
+---
 
 ## 🗄️ Database Initialization
 
@@ -153,15 +160,6 @@ npm start
 docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
 ```
 
-### Or, load it once during first run
-The `docker-compose.yml` defines a volume for MySQL, so data **persists** between restarts. To re-seed from scratch:
-```bash
-docker compose down -v          # ⚠️ wipes MySQL data volume
-docker compose up --build -d
-docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
-```
-
----
 
 ## ⚙️ Environment & Configuration
 
