@@ -289,6 +289,14 @@ docker compose ps                  # is ft-mysql healthy?
 docker compose logs mysql          # any startup errors?
 ```
 
+### ❌ `docker compose up` fails with "port already allocated"
+Another process is using port `3306`, `8080`, or `8081`. Stop it, or edit `docker-compose.yml` to map different host ports.
+
+### ❌ Hot-reload not working
+The compose file mounts the project source as a volume so edits are reflected inside the container. If it isn't picking up changes, restart the affected service:
+```bash
+docker compose restart frontend
+```
 
 ---
 
@@ -301,9 +309,6 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
 - **`backend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm start` (nodemon).
 - **`frontend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm run serve`.
 - **`init.sql`** — canonical DB schema + sample food data, replaceable of older dumps in `frontend/src/resources/`.
-
-### ✏️ Modified files
-- **`backend/config/database.js`** — `host` changed from `localhost` to the Docker service name `mysql`; added a retry loop (`connectWithRetry`) so the backend waits for MySQL to be ready.
 
 ### ⚠️ Known issue after restructure
 > DB, backend, and frontend are all running, but the UI still shows a **white/blank page** and **menu items are not displayed**.
