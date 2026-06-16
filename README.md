@@ -315,3 +315,13 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
 
 ### ⚠️ Known issue after restructure
 > DB, backend, and frontend are all running, but the UI still shows a **white/blank page** and **menu items are not displayed**.
+
+If you hit this, see the [Troubleshooting → White / blank interface](#-white--blank-interface-on-httplocalhost8080) section above. The most likely culprits are:
+- Frontend axios base URL not pointing at `http://localhost:8081`.
+- API returning empty because `init.sql` was never loaded.
+- Browser-side Vue errors (check the console + `docker compose logs -f frontend`).
+
+---
+
+## 📜 License
+This project is private/educational — feel free to adapt for your own café or restaurant.
