@@ -73,17 +73,6 @@ FT-Project/
         └── store/index.js      # Vuex
 ```
 
----
-
-## 🧰 Tech Stack
-| Layer        | Technology                                      |
-|--------------|--------------------------------------------------|
-| Frontend     | Vue 3, Vue Router, Vuex, Bootstrap 4, Axios      |
-| Backend      | Node.js 18, Express 4, mysql2, Chapa SDK         |
-| Database     | MySQL 8.0                                       |
-| DevOps       | Docker, Docker Compose                          |
-
----
 
 ## 🚀 Quick Start (Docker — Recommended)
 
@@ -160,6 +149,15 @@ You must run a local MySQL 8 instance, then:
 docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
 ```
 
+### Or, load it once during first run
+The `docker-compose.yml` defines a volume for MySQL, so data **persists** between restarts. To re-seed from scratch:
+```bash
+docker compose down -v          # ⚠️ wipes MySQL data volume
+docker compose up --build -d
+docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
+```
+
+---
 
 ## ⚙️ Environment & Configuration
 
