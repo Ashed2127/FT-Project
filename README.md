@@ -49,3 +49,4 @@ docker compose up --build -d
 
 also new init.sql file added
 config/database.js changed
+docker-compose file added
