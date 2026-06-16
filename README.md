@@ -25,3 +25,22 @@ npm run serve
 ```
 0900123456
 ```
+
+
+
+
+# See all running containers
+docker compose ps
+
+# View backend logs
+docker compose logs backend
+
+# View frontend logs
+docker compose logs frontend
+
+# Restart everything
+docker compose restart
+
+# Stop everything
+docker compose down -v | docker compose down
+docker compose up --build -d
