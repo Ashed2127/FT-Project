@@ -200,6 +200,23 @@ In the **backend**, replace the Chapa secret key with your own. The relevant fil
 - `backend/pay.js`
 - `backend/tx_ref_verify.js`
 
+### Test Chapa numbers (sandbox)
+Use one of the following test phone numbers provided by Chapa:
+
+**Awash**
+```
+0900123456
+```
+
+**Amole**
+```
+0900123456
+```
+
+**Telebirr**
+```
+0900123456
+```
 
 ---
 
@@ -265,12 +282,6 @@ docker exec -it ft-mysql bash
    docker compose up --build -d
    ```
 
-### ❌ Backend logs: `❌ DB connection failed. Retrying in 5s...`
-This is normal on the **very first start** — the backend is waiting for MySQL to finish initializing. If it never succeeds:
-```bash
-docker compose ps                  # is ft-mysql healthy?
-docker compose logs mysql          # any startup errors?
-```
 
 ### ❌ `docker compose up` fails with "port already allocated"
 Another process is using port `3306`, `8080`, or `8081`. Stop it, or edit `docker-compose.yml` to map different host ports.
