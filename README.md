@@ -53,4 +53,4 @@ docker-compose file added in main root folder
 Dockerfile added in each backend and frontend root folder
 in short Ft PRoject restructured(docker added) using grok
 but still white interface
-items not displayed
+items not displayed but all db, backend and frontend running
