@@ -37,6 +37,7 @@ docker compose logs backend
 
 # View frontend logs
 docker compose logs frontend
+docker compose logs -f backend
 
 # Restart everything
 docker compose restart
