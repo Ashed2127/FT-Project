@@ -52,3 +52,4 @@ config/database.js changed
 docker-compose file added in main root folder
 Dockerfile added in each backend and frontend root folder
 in short Ft PRoject restructured(docker added) using grok
+but still white interface
