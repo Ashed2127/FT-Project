@@ -73,6 +73,17 @@ FT-Project/
         └── store/index.js      # Vuex
 ```
 
+---
+
+## 🧰 Tech Stack
+| Layer        | Technology                                      |
+|--------------|--------------------------------------------------|
+| Frontend     | Vue 3, Vue Router, Vuex, Bootstrap 4, Axios      |
+| Backend      | Node.js 18, Express 4, mysql2, Chapa SDK         |
+| Database     | MySQL 8.0                                       |
+| DevOps       | Docker, Docker Compose                          |
+
+---
 
 ## 🚀 Quick Start (Docker — Recommended)
 
@@ -93,12 +104,6 @@ cd FT-Project
 docker compose up --build -d
 ```
 
-This spins up three containers:
-| Service   | Container name | Port  | Purpose                       |
-|-----------|----------------|-------|-------------------------------|
-| `mysql`   | ft-mysql       | 3306  | MySQL 8 database              |
-| `backend` | ft-backend     | 8081  | Node.js API                   |
-| `frontend`| ft-frontend    | 8080  | Vue dev server (hot-reload)   |
 
 ### 3. Open the app
 - 🌐 **Frontend:** http://localhost:8080
