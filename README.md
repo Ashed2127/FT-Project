@@ -189,24 +189,17 @@ Check `frontend/src/axios.js` and make sure it targets `http://localhost:8081` (
 
 ---
 
+## 💳 Chapa Payment Setup
 
-### Test Chapa numbers (sandbox)
-Use one of the following test phone numbers provided by Chapa:
+In the **backend**, replace the Chapa secret key with your own. The relevant files are:
+- `backend/bookpay.js`
+- `backend/ch.js`
+- `backend/cha.js`
+- `backend/chapa-wrapper.js`
+- `backend/newPay.js`
+- `backend/pay.js`
+- `backend/tx_ref_verify.js`
 
-**Awash**
-```
-0900123456
-```
-
-**Amole**
-```
-0900123456
-```
-
-**Telebirr**
-```
-0900123456
-```
 
 ---
 
