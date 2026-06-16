@@ -312,3 +312,6 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
 
 ### ✏️ Modified files
 - **`backend/config/database.js`** — `host` changed from `localhost` to the Docker service name `mysql`; added a retry loop (`connectWithRetry`) so the backend waits for MySQL to be ready.
+
+### ⚠️ Known issue after restructure
+> DB, backend, and frontend are all running, but the UI still shows a **white/blank page** and **menu items are not displayed**.
