@@ -160,6 +160,15 @@ You must run a local MySQL 8 instance, then:
 docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
 ```
 
+### Or, load it once during first run
+The `docker-compose.yml` defines a volume for MySQL, so data **persists** between restarts. To re-seed from scratch:
+```bash
+docker compose down -v          # ⚠️ wipes MySQL data volume
+docker compose up --build -d
+docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
+```
+
+---
 
 ## ⚙️ Environment & Configuration
 
@@ -180,16 +189,6 @@ Check `frontend/src/axios.js` and make sure it targets `http://localhost:8081` (
 
 ---
 
-## 💳 Chapa Payment Setup
-
-In the **backend**, replace the Chapa secret key with your own. The relevant files are:
-- `backend/bookpay.js`
-- `backend/ch.js`
-- `backend/cha.js`
-- `backend/chapa-wrapper.js`
-- `backend/newPay.js`
-- `backend/pay.js`
-- `backend/tx_ref_verify.js`
 
 ### Test Chapa numbers (sandbox)
 Use one of the following test phone numbers provided by Chapa:
