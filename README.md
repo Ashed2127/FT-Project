@@ -239,6 +239,11 @@ docker compose logs mysql
 
 # Restart everything
 docker compose restart
+# To stop
+docker compose stop
+
+# To start
+docker compose start
 
 # Stop everything (keep data volume)
 docker compose down
