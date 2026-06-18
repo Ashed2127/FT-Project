@@ -172,8 +172,8 @@ export default {
   },
 
   created() {
-    //this.eng();
-    //this.oro();
+    // this.eng();
+    // this.oro();
     const storedLangStatus = localStorage.getItem("newLangStatus");
     //this.eng();
     //this.oro();
