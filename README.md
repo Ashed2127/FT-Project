@@ -4,6 +4,20 @@
 # Contribution step 4
 # Contribution step 5
 # Contribution step 6
+# Contribution step 7
+# Contribution step 8
+# Contribution step 9
+# Contribution step 10
+# Contribution step 11
+# Contribution step 12
+# Contribution step 13
+# Contribution step 14
+# Contribution step 15
+# Contribution step 16
+# Contribution step 17
+# Contribution step 18
+# Contribution step 19
+# Contribution step 20
 11. Run any pending database migrations (if applicable):
    ```bash
    # Example using a migration tool
@@ -453,3 +467,4 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
       npm install
       cd ..
       ```
+# Contribution step 3
