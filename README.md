@@ -20,105 +20,11 @@ A full-stack web application for **Lewi Cafe** that lets customers browse the me
 9. [Useful Docker Commands](#-useful-docker-commands)
 10. [Troubleshooting](#-troubleshooting)
 11. [Recent Restructure Notes](#-recent-restructure-notes)
-
-## Setup Guide (Contributions)
-
-The numbered steps below are intentionally kept in the order they appear in the file, even if they are not sequentially ordered.
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Ashed2127/FT-Project.git
-   cd FT-Project
-   ```
-2. Build and start the Docker containers:
-   ```bash
-   docker compose up --build -d
-   ```
-3. Initialize the MySQL database (if not already initialized):
-   ```bash
-   docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
-   ```
-4. Install backend dependencies:
-   ```bash
-   cd backend
-   npm install
-   cd ..
-   ```
-5. Install frontend dependencies:
-   ```bash
-   cd frontend
-   npm install
-   cd ..
-   ```
-6. Start the backend server (in a new terminal):
-   ```bash
-   cd backend
-   npm start
-   ```
-7. Verify the backend is reachable:
-   ```bash
-   curl http://localhost:8081/health || echo "Backend not reachable"
-   ```
-8. Start the frontend development server (in a new terminal):
-   ```bash
-   cd frontend
-   npm run serve
-   ```
-9. Open the application in your browser:
-   ```bash
-   open http://localhost:8080
-   ```
-10. Set required environment variables (e.g., CHAPA_SECRET_KEY):
-   ```bash
-   export CHAPA_SECRET_KEY=your_secret_key
-   ```
-11. Run any pending database migrations (if applicable):
-   ```bash
-   cd backend
-   npm run migrate
-   cd ..
-   ```
-12. Build the frontend for production (optional):
-   ```bash
-   cd frontend
-   npm run build
-   cd ..
-   ```
-13. Deploy containers to a remote host (e.g., Docker Swarm):
-   ```bash
-   docker compose -f docker-compose.yml up -d
-   ```
-14. Set up an Nginx reverse proxy (if needed):
-   ```nginx
-   server {
-      listen 80;
-      location / {
-         proxy_pass http://ft-frontend:8080;
-      }
-      location /api/ {
-         proxy_pass http://ft-backend:8081/;
-      }
-   }
-   ```
-15. Secure the site with HTTPS (e.g., Let's Encrypt):
-   ```bash
-   certbot --nginx -d yourdomain.com
-   ```
-16. Scale services using Docker Compose:
-   ```bash
-   docker compose up -d --scale backend=2 frontend=2
-   ```
-17. Run the test suite:
-   ```bash
-   cd backend && npm test && cd ..
-   cd frontend && npm test && cd ..
-   ```
-18. Lint the codebase:
-   ```bash
-   cd backend && npm run lint && cd ..
-   cd frontend && npm run lint && cd ..
-   ```
-19. Open an issue on GitHub for bugs or feature ideas.
-20. Submit a pull request following the standard Git workflow.
+12. [Development Workflow](#-development-workflow)
+13. [Testing Guidelines](#-testing-guidelines)
+14. [Contributing Guidelines](#-contributing-guidelines)
+15. [Debugging Tips](#-debugging-tips)
+16. [Performance Optimization](#-performance-optimization)
 
 ---
 
@@ -435,67 +341,144 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
    npm install
    cd ..
    ```
-   5. Install frontend dependencies:
-      ```bash
-      cd frontend
-      npm install
-      cd ..
-      ```
-# Contribution step 3
-# Contribution step 4
-# Contribution step 5
-# Contribution step 6
-# Contribution step 7
-# Contribution step 8
-# Contribution step 9
-# Contribution step 10
-# Contribution step 11
-# Contribution step 12
-# Contribution step 13
-# Contribution step 14
-# Contribution step 15
-# Contribution step 16
-# Contribution step 17
-# Contribution step 18
-# Contribution step 19
-# Contribution step 20
-# Contribution step 41
-# Contribution step 42
-# Contribution step 43
-# Contribution step 44
-# Contribution step 45
-# Contribution step 46
-# Contribution step 47
-# Contribution step 48
-# Contribution step 49
-# Contribution step 50
-# Contribution step 51
-# Contribution step 52
-# Contribution step 53
-# Contribution step 54
-# Contribution step 55
-# Contribution step 56
-# Contribution step 57
-# Contribution step 58
-# Contribution step 59
-# Contribution step 60
-# Contribution step 61
-# Contribution step 62
-# Contribution step 63
-# Contribution step 64
-# Contribution step 65
-# Contribution step 66
-# Contribution step 67
-# Contribution step 68
-# Contribution step 69
-# Contribution step 70
-# Contribution step 71
-# Contribution step 72
-# Contribution step 73
-# Contribution step 74
-# Contribution step 75
-# Contribution step 76
-# Contribution step 77
-# Contribution step 78
-# Contribution step 79
-# Contribution step 80
+5. Install frontend dependencies:
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
+
+---
+
+## 🔄 Development Workflow
+
+### Making Changes
+- **Frontend changes:** Edit files in `frontend/src/`. The dev server hot-reloads automatically.
+- **Backend changes:** Edit files in `backend/`. Nodemon automatically restarts the server.
+- **Database changes:** Modify `init.sql` for schema changes, then re-seed the database.
+
+### Testing Changes
+1. **Frontend:** 
+   - Access at http://localhost:8080
+   - Check browser console for errors
+   - Test responsive design at different viewport sizes
+2. **Backend:**
+   - Access API at http://localhost:8081
+   - Check endpoints using Postman or curl
+   - Monitor logs: `docker compose logs -f backend`
+
+### Common Development Tasks
+
+#### Adding New Food Items
+```sql
+INSERT INTO food (name, category, price, description, image) 
+VALUES ('New Dish', 'lunch', 150.00, 'Delicious new item', 'path/to/image.jpg');
+```
+
+#### Modifying API Endpoints
+1. Edit controller in `backend/controllers/`
+2. Update routes in `backend/routes/routes.js`
+3. Restart backend: `docker compose restart backend`
+
+#### Adding New Pages
+1. Create Vue component in `frontend/src/pages/`
+2. Add route in `frontend/src/router/index.js`
+3. Update navigation in `frontend/src/components/NavBar.vue`
+
+---
+
+## 🧪 Testing Guidelines
+
+### Manual Testing Checklist
+- [ ] User registration and login
+- [ ] Food browsing by category
+- [ ] Adding items to cart
+- [ ] Checkout process
+- [ ] Chapa payment integration (test mode)
+- [ ] Table reservation
+- [ ] Admin dashboard functionality
+- [ ] Delivery person dashboard
+- [ ] Voice ordering feature
+- [ ] Responsive design on mobile/tablet
+
+### API Testing
+Use these sample endpoints to test backend:
+```bash
+# Health check
+curl http://localhost:8081/health
+
+# Get all food items
+curl http://localhost:8081/api/food
+
+# Get food by category
+curl http://localhost:8081/api/food/category/lunch
+```
+
+---
+
+## 🤝 Contributing Guidelines
+
+### Code Style
+- **Frontend:** Follow Vue 3 style guide, use meaningful component names
+- **Backend:** Use Express best practices, proper error handling
+- **Database:** Use descriptive table/column names, proper indexing
+
+### Commit Messages
+Use conventional commit format:
+```
+feat: add table reservation feature
+fix: resolve payment gateway timeout issue
+docs: update README with setup instructions
+```
+
+### Pull Request Process
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'feat: add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Before Submitting
+- [ ] Test your changes thoroughly
+- [ ] Update documentation if needed
+- [ ] Ensure no console errors
+- [ ] Check responsive design
+- [ ] Verify database migrations work
+
+---
+
+## 🐛 Debugging Tips
+
+### Frontend Issues
+- **Blank page:** Check browser console for Vue errors
+- **API errors:** Check Network tab for failed requests
+- **Styling issues:** Clear browser cache and restart dev server
+
+### Backend Issues
+- **Connection errors:** Verify MySQL container is running
+- **API not responding:** Check backend logs: `docker compose logs backend`
+- **Database errors:** Verify database schema matches code expectations
+
+### Docker Issues
+- **Port conflicts:** Check if ports 3306, 8080, 8081 are available
+- **Container won't start:** Check logs: `docker compose logs [service]`
+- **Stale containers:** Rebuild: `docker compose down && docker compose up --build -d`
+
+---
+
+## 📈 Performance Optimization
+
+### Database
+- Add indexes to frequently queried columns
+- Use prepared statements to prevent SQL injection
+- Implement connection pooling for high traffic
+
+### Frontend
+- Lazy load images and components
+- Implement pagination for large datasets
+- Use Vue's async components for heavy features
+
+### Backend
+- Implement caching for frequently accessed data
+- Use rate limiting for API endpoints
+- Optimize database queries with proper joins
