@@ -474,3 +474,4 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
 # Contribution step 7
 # Contribution step 8
 # Contribution step 9
+# Contribution step 10
