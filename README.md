@@ -310,7 +310,14 @@ docker compose restart frontend
 The project was **restructured to add Docker support** (assisted by Grok). Summary of what changed:
 
 ### 🆕 New files
-- **`docker-compose.yml`** (project root) — defines the `mysql`, `backend`, and `frontend` services.
-- **`backend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm start` (nodemon).
-- **`frontend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm run serve`.
-- **`init.sql`** — canonical DB schema + sample food data, replaceable of older dumps in `frontend/src/resources/`.
+-- **`docker-compose.yml`** (project root) — defines the `mysql`, `backend`, and `frontend` services.
+-- **`backend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm start` (nodemon).
+-- **`frontend/Dockerfile`** — Node 18 Alpine image, installs deps, runs `npm run serve`.
+-- **`init.sql`** — canonical DB schema + sample food data, replaceable of older dumps in `frontend/src/resources/`.
+
+## 📦 Setup Guide (Contributions)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ashed2127/FT-Project.git
+   cd FT-Project
+   ```
