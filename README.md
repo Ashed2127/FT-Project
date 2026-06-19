@@ -21,6 +21,105 @@ A full-stack web application for **Lewi Cafe** that lets customers browse the me
 10. [Troubleshooting](#-troubleshooting)
 11. [Recent Restructure Notes](#-recent-restructure-notes)
 
+## Setup Guide (Contributions)
+
+The numbered steps below are intentionally kept in the order they appear in the file, even if they are not sequentially ordered.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ashed2127/FT-Project.git
+   cd FT-Project
+   ```
+2. Build and start the Docker containers:
+   ```bash
+   docker compose up --build -d
+   ```
+3. Initialize the MySQL database (if not already initialized):
+   ```bash
+   docker exec -i ft-mysql mysql -uroot -prootpassword db_restaurant < init.sql
+   ```
+4. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
+5. Install frontend dependencies:
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
+6. Start the backend server (in a new terminal):
+   ```bash
+   cd backend
+   npm start
+   ```
+7. Verify the backend is reachable:
+   ```bash
+   curl http://localhost:8081/health || echo "Backend not reachable"
+   ```
+8. Start the frontend development server (in a new terminal):
+   ```bash
+   cd frontend
+   npm run serve
+   ```
+9. Open the application in your browser:
+   ```bash
+   open http://localhost:8080
+   ```
+10. Set required environment variables (e.g., CHAPA_SECRET_KEY):
+   ```bash
+   export CHAPA_SECRET_KEY=your_secret_key
+   ```
+11. Run any pending database migrations (if applicable):
+   ```bash
+   cd backend
+   npm run migrate
+   cd ..
+   ```
+12. Build the frontend for production (optional):
+   ```bash
+   cd frontend
+   npm run build
+   cd ..
+   ```
+13. Deploy containers to a remote host (e.g., Docker Swarm):
+   ```bash
+   docker compose -f docker-compose.yml up -d
+   ```
+14. Set up an Nginx reverse proxy (if needed):
+   ```nginx
+   server {
+      listen 80;
+      location / {
+         proxy_pass http://ft-frontend:8080;
+      }
+      location /api/ {
+         proxy_pass http://ft-backend:8081/;
+      }
+   }
+   ```
+15. Secure the site with HTTPS (e.g., Let's Encrypt):
+   ```bash
+   certbot --nginx -d yourdomain.com
+   ```
+16. Scale services using Docker Compose:
+   ```bash
+   docker compose up -d --scale backend=2 frontend=2
+   ```
+17. Run the test suite:
+   ```bash
+   cd backend && npm test && cd ..
+   cd frontend && npm test && cd ..
+   ```
+18. Lint the codebase:
+   ```bash
+   cd backend && npm run lint && cd ..
+   cd frontend && npm run lint && cd ..
+   ```
+19. Open an issue on GitHub for bugs or feature ideas.
+20. Submit a pull request following the standard Git workflow.
+
 ---
 
 ## ✨ Features
@@ -380,3 +479,4 @@ The project was **restructured to add Docker support** (assisted by Grok). Summa
 # Contribution step 58
 # Contribution step 59
 # Contribution step 60
+# Contribution step 61
